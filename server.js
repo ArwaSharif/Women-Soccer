@@ -19,19 +19,18 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Middleware to verify token and assign user object of payload to req.user.
 // Be sure to mount before routes
 //giving us context = who is logged in
+//will fired on all of our routers
 app.use(require('./config/checkToken'));
 
-
-// Put API routes here, before the "catch all" route
-
-// ======EXAMPLE======
-// //controller
-// const testController = (req, res) => {
-
-// }
-
-// //route
-// app.get("/test", testController)
+//sign up and login part 
+app.use('/api/users', require('./routes/api/users'));
+// Protect the API routes below from anonymous users
+//setting up routers for order and item
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+//checking if a user logged in
+//the middleware ensureLoggedIn will protect all the routes and persist login
+app.use('/api/items', ensureLoggedIn, require('./routes/api/items'));
+app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'))
 
 app.use('/api/users', require('./routes/api/users'))
 

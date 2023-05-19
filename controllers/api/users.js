@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt')
 module.exports = { 
   create,
   login,
-  checkToken,
  };
 
 // controllers/api/users.js
@@ -28,7 +27,7 @@ async function create(req, res) {
   }
 }
 
-//async/await new syntax for .the() aka thennables
+//async/await new syntax for .the() aka "thennables"
 
 async function login(req, res) {
   try {
@@ -36,7 +35,7 @@ async function login(req, res) {
     //
     const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error(); // if user is not found
-    // if user found, compare passowrd
+    // if user found, compare password
     //1st arg from the credentials the user typed in
     //2nd arg what's stored in the database
     const match = await bcrypt.compare(req.body.password, user.password); 
@@ -45,12 +44,6 @@ async function login(req, res) {
   } catch {
     res.status(400).json('Bad Credentials');
   }
-}
-
-function checkToken(req, res) {
-  // req.user will always be there for you when a token is sent
-  console.log('req.user', req.user);
-  res.json(req.exp);
 }
 
 /*-- Helper Functions --*/
