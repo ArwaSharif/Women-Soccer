@@ -30,7 +30,7 @@ export default function OrderDetail({
           <span>NEW ORDER</span>
         )}
 
-        <span>{new Date(order.updatedAt).toLocaleDateString()}</span>
+        <span>{'   '}{new Date(order.updatedAt).toLocaleDateString()}</span>
       </div>
 
       <div
