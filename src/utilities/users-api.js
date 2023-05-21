@@ -1,3 +1,7 @@
+/*
+API modules: API modules are for abstracting logic that make network requests such as AJAX calls to the backend or third-party APIs. This abstraction makes it easier to refactor code to use different techniques, libraries, etc. For example, we are going to be using fetchfor our AJAX communications, however, refactoring to use a library such as Axios would be made easy thanks to the use of API modules.
+*/
+
 //importing get token t use in line 55
 import sendRequest from './send-request';
 
