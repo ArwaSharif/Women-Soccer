@@ -1,4 +1,4 @@
-//he users-service.js module will definitely need to make AJAX requests to the Express server.
+//the users-service.js module will need to make AJAX requests to the Express server.
 
 import { getToken } from "./users-service";
 

@@ -1,0 +1,1 @@
+// route to show and edit other team info 

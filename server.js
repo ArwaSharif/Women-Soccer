@@ -25,12 +25,14 @@ app.use(require('./config/checkToken'));
 //sign up and login part 
 app.use('/api/users', require('./routes/api/users'));
 // Protect the API routes below from anonymous users
-//setting up routers for order and item
-const ensureLoggedIn = require('./config/ensureLoggedIn');
-//checking if a user logged in
-//the middleware ensureLoggedIn will protect all the routes and persist login
-app.use('/api/items', ensureLoggedIn, require('./routes/api/items'));
-app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'))
+// //setting up routers for order and item
+// const ensureLoggedIn = require('./config/ensureLoggedIn');
+// //checking if a user logged in
+// //the middleware ensureLoggedIn will protect all the routes and persist login
+// app.use('/api/favorites', ensureLoggedIn, require('./routes/api/favorites'));
+// app.use('/api/addNewTeam', ensureLoggedIn, require('./routes/api/addNewTeam'));
+// app.use('/api/favorites', ensureLoggedIn, require('./routes/api/users/favorites'));
+// app.use('/api/newTeam', ensureLoggedIn, require('./routes/api/users/add-new-team'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

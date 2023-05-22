@@ -1,0 +1,16 @@
+.OtherTeams {
+    text-align: center;
+}
+.OtherTeamsList {
+    display: flex;
+  justify-content: space-between; /* or center */
+  color: white;
+  padding: 15px;
+  font-size: 2em;
+  text-align: center;
+}
+/* 
+.OtherTeams a {
+  color: white;
+  text-decoration: none;
+} */

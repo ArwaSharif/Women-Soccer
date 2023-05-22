@@ -1,0 +1,1 @@
+// route to show team info

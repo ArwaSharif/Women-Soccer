@@ -3,6 +3,8 @@ Service modules: Service modules are where we can organize application specific 
 */
 
 // We will use a src/utilities/users-service.js module to organize functions used to sign-up, log in, log out, etc.
+
+
 // Using the (*) will import all of the exports from a file and put it in a object
 import * as usersAPI from "./users-api";
 
@@ -30,6 +32,22 @@ export async function login(credentials) {
   return getUser()
 
 }
+
+// AddNewTeam func
+
+// export async function AddNewTeam(NewTeam) {
+//   // Delegate the network request code to the users-api.js API module
+//   // which will ultimately return a JSON Web Token (JWT)
+//   const token = await usersAPI.AddNewTeam(NewTeam);
+
+//   //persist the token
+//   //first item is a property and 2nd is an property item
+//   localStorage.setItem("token", token);
+
+//   // Baby step by returning whatever is sent back by the server
+//   // return getUser();
+// }
+
 
 //=========Setting the userState When the Page is Loaded or Refreshed==============
 // grabbing the token

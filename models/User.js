@@ -29,6 +29,7 @@ const userSchema = new Schema({
   }
 });
 
+//hashing the password in the db
 userSchema.pre('save', async function(next) {
   // 'this' is the use document
   if (!this.isModified('password')) return next();
