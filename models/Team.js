@@ -5,4 +5,4 @@ require('./Teams');
 
 const teamSchema = require('./teamSchema');
 
-module.exports = mongoose.model('Item', teamSchema);
+module.exports = mongoose.model('Team', teamSchema);

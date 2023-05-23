@@ -1,7 +1,16 @@
 import { useState } from "react";
-import styles from "./OtherTeams.module.css";
+import styles from "./AllTeams.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function OtherTeams({ setUser }) {
+export default function AllTeams({ user }, setUser) {
+
+  const navigate = useNavigate()
+async function handleAddToFav() {
+  // await favoritesAPI.addToFav();
+  navigate('/favorites');
+}
+
+
   return (
     <>
       <div className={styles.OtherTeams}>
@@ -17,6 +26,13 @@ export default function OtherTeams({ setUser }) {
           otherTeam.name.abbrev
           {/* otherTeam.name.abbrev */}
         </h4>
+        <div className="addFavBtn">
+       <button
+         className="btn-sm"
+        onClick={handleAddToFav}
+        disabled={!user}>Add {/* team.name  */} To Your Favorite List
+         </button>
+       </div>
       </div>
       </div>
     </>

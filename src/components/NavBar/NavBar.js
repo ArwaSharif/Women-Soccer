@@ -1,12 +1,13 @@
 import * as userService from "../../utilities/users-service";
 import format from "date-fns/format";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router-dom";
 // Using the import below, we can call any exported function using: userService.someMethod()
 import styles from "./NavBar.module.css";
-import AuthPage from "../../pages/AuthPage/AuthPage";
+import SignUpLogIn from "../SignUpLogIn/SignUpLogIn";
 import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage";
-import AddNewTeamPage from "../../pages/AddNewTeamPage/AddNewTeamPage";
+import NewOtherTeamPage from "../../pages/NewTeamPage/NewTeamPage";
+import AuthPage from "../../pages/AuthPage/AuthPage";
 
 export default function NavBar({ user }, setUser) {
   const date = format(new Date(), "EE MM-dd-yyyy hh:mm aaa");
@@ -25,61 +26,115 @@ export default function NavBar({ user }, setUser) {
 
   function handleLogOut() {
     // Delegate to the users-service
-   userService.logOut();
-   // Update state will also cause a re-render
-   setUser(null)
- }
- 
+    userService.logOut();
+    // Update state will also cause a re-render
+    setUser(null);
+  }
+
   return (
     <div className={styles.NavBar}>
-      <Link to="/signUp-sogIn">
+      <NavLink
+        className="navbar-item"
+        activeClassName="is-active"
+        to="/signUp-logIn"
+        exact
+      >
         <div className="loginDiv">
-          Sign Up/Log In
-          {/* <Routes>
-        <Route path="/SignUp-LogIn" element={<AuthPage user={user} setUser={setUser} />} />
-      </Routes> */}
-          {/* {handleClick}   */}
-          <AuthPage user={user} setUser={setUser} />
-          {/* <span> Welcome, {user.name}! </span> */}
+          {!user ? (
+            <h6>Sign UP/Log In</h6>
+          ) : (
+            <span> Welcome, {user.name}! </span>
+          )}
+          {/* <SignUpLogIn />  */}
         </div>
-      </Link>
-      &nbsp; | &nbsp;
-      <Link to="/savorites">
-      <div className="favsDiv">
-        Favorites
-        <FavoritesPage setUser={setUser} />
-        {/* <Routes>
-          <Route
-            path="/favorites"
-            element={<FavoritesPage user={user} setUser={setUser} />}
-          />
-        </Routes> */}
-      </div>
-      &nbsp; | &nbsp;
-      </Link>
-      <Link to="/newTeam">
-      <div className="addNewTeamDiv">
-        Add A New Team
-        <AddNewTeamPage setUser={setUser}/>
-        {/* <Routes>
-          <Route
-            path="/new-team"
-            element={<AddNewTeamPage user={user} setUser={setUser} />}
-          />
-        </Routes> */}
-      </div>
-      &nbsp; | &nbsp;
-      </Link>
+      </NavLink>
+      <NavLink
+        className="navbar-item"
+        activeClassName="is-active"
+        to="/favorites"
+        exact
+      >
+        <div className="loginDiv">
+          Favorite
+          {/* {user ? <FavoritesPage /> : <AuthPage />} */}
+        </div>
+      </NavLink>
+      <NavLink
+        className="navbar-item"
+        activeClassName="is-active"
+        to="/new-team"
+        exact
+      >
+        <div className="loginDiv">
+          Add New Team
+          {/* {user ? <FavoritesPage /> : <AuthPage />} */}
+        </div>
+      </NavLink>
       <div className="logOutDiv">
-      <Link to="" onClick={handleLogOut}> Log Out </Link>
+        {user && (
+          <Link to="" onClick={handleLogOut}>
+            {" "}
+            Log Out{" "}
+          </Link>
+        )}
       </div>
-      <div className="timeDiv">
-        {date}
-      </div>
+      &nbsp; | &nbsp;
+      <div className="timeDiv">{date}</div>
     </div>
   );
 }
 
+//   {/* <NavLink
+//     className="navbar-item"
+//     activeClassName="is-active"
+//     to="/signUp-logIn"
+//     exact
+// >
+//         <div className="loginDiv">
+//           Sign Up/Log In
+//           {
+//     !user ? (
+//      <SignUpLogIn />
+
+//     ) : (
+//       <span> Welcome, {user.name}! </span>
+//     )
+//   }
+//           {/*  */}
+//           {/* <Routes>
+//         <Route path="/SignUp-LogIn" element={<AuthPage user={user} setUser={setUser} />} />
+//       </Routes> */}
+//           {/* {handleClick}   */}
+//           {/* <AuthPage user={user} setUser={setUser} /> */}
+//           {/* <span> Welcome, {user.name}! </span> */}
+//           </div>
+//           </NavLink>
+//           &nbsp; | &nbsp;
+//           <Link to="/favorites">
+//           <div className="favsDiv">
+//             Favorites
+
+//             {/* <Routes>
+//               <Route
+//                 path="/favorites"
+//                 element={<FavoritesPage user={user} setUser={setUser} />}
+//               />
+//             </Routes> */}
+//           </div>
+//           &nbsp; | &nbsp;
+//           </Link>
+//           <Link to="/newTeam">
+//           <div className="addNewTeamDiv">
+//             Add A New Team
+
+//             {/* <Routes>
+//               <Route
+//                 path="/new-team"
+//                 element={<AddNewTeamPage user={user} setUser={setUser} />}
+//               />
+//             </Routes> */}
+//           </div> */}
+//           </Link>
 // import { Link } from "react-router-dom"
 // // Using the import below, we can call any exported function using: userService.someMethod()
 // import * as userService from '../../utilities/users-service';

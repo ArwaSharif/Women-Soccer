@@ -1,18 +1,22 @@
 // src/components/.jsx <--> users-service.js <--> users-api.js <-Internet-> server.js (Express)
 
 import { useState } from "react";
-import styles from "./TeamInfo.module.css";
+import { useNavigate } from "react-router-dom";
+import styles from "./NewTeamPage.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Logo from "../../components/Logo/Logo";
 import { Component } from 'react';
-import { AddNewTeam } from '../../utilities/users-service';
+import AuthPage from "../AuthPage/AuthPage";
+// import { AddNewTeam } from '../../utilities/users-service';
 // export default function NewOtherTeam({ user }, setUser) {
 //useState OR props
 // async function handleAddToFav() {
 //   await favoritesAPI.addToFav();
 //   navigate('/favorites');
 // }
-export default class AddNewTeamForm extends Component {
+
+
+export default class NewOtherTeamPage extends Component {
   state = {
     name: '',
     nameAbbreviation: '',
@@ -44,23 +48,32 @@ export default class AddNewTeamForm extends Component {
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
-      const user = await AddNewTeam(formData); // the signUp() does token management 
+      // const user = await AddNewTeam(formData); // the signUp() does token management 
       // Baby step!
       // console.log("Hello", user);
 
-      this.props.setUser(user)
+      // this.props.setUser(user)
     } catch {
       // An error occurred
       this.setState({ error: 'Please Fill Out All the Fields' });
     }
   };
 
+  handleNavigateToBasePage = async () => {
+  const navigate = useNavigate();
+  // await favoritesAPI.addToFav();
+  navigate('/');
+}
+
+
 render() {
-  const disable = this.state !== this.state.confirm;
+
+  // const disable = this.state !== this.state.confirm;
+
   return (
     <div>
-       <Logo />
-      <NavBar />
+      {this.props.user ? 
+      (<>
       <div className="newTeamForm-container">
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <label>Team Name</label>
@@ -71,7 +84,7 @@ render() {
             onChange={this.handleChange}
             required
           />
-          <label>Tam Name Abbreviation </label>
+          <label>Team Name Abbreviation </label>
           <input
             type="text"
             name="nameAbbreviation"
@@ -90,21 +103,26 @@ render() {
           <label>Coach Name</label>
           <input
             type="text"
-            name="Coach"
+            name="coach"
             value={this.state.coach}
             onChange={this.handleChange}
             required
           />
-          <button type="submit" disabled={disable}>
+          {/* <button type="submit" onClick={this.handleNavigateToBasePage}> */}
+          <button type="submit" onClick={this.handleNavigateToBasePage}>
             Add New Team
           </button>
         </form>
       </div>
-      {/* <p className="error-message">&nbsp;{this.state.error}</p> */}
-    </div>
+    </>)
+    : 
+    <AuthPage />
+  }
+  </div>
   );
 }
 }
+// {/* <p className="error-message">&nbsp;{this.state.error}</p> */}
 // }
 //   return (
 //     <div className={styles.TeamInfo}>
