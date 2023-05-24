@@ -4,7 +4,6 @@ Service modules: Service modules are where we can organize application specific 
 
 // We will use a src/utilities/users-service.js module to organize functions used to sign-up, log in, log out, etc.
 
-
 // Using the (*) will import all of the exports from a file and put it in a object
 import * as usersAPI from "./users-api";
 
@@ -29,8 +28,7 @@ export async function login(credentials) {
   //first item is a property and 2nd is an property item
   localStorage.setItem("token", token);
 
-  return getUser()
-
+  return getUser();
 }
 
 // AddNewTeam func
@@ -48,19 +46,18 @@ export async function login(credentials) {
 //   // return getNewTeam()
 // }
 
-
 //=========Setting the userState When the Page is Loaded or Refreshed==============
 // grabbing the token
 export function getToken() {
   // getItem returns null if there's no string
-  const token = localStorage.getItem("token");// getItem is a local storage built-in method
+  const token = localStorage.getItem("token"); // getItem is a local storage built-in method
   if (!token) return null;
   // Obtain the payload of the token and decode it w/ atob
   const payload = JSON.parse(atob(token.split(".")[1])); //splitting at the 1st indexed "."
   // A JWT's expiration is expressed in seconds, not milliseconds, so convert
   if (payload.exp < Date.now() / 1000) {
     // Token has expired - remove it from localStorage
-    localStorage.removeItem("token");// removeItem is a local storage built-in method
+    localStorage.removeItem("token"); // removeItem is a local storage built-in method
     return null;
   }
   return token;
@@ -75,7 +72,7 @@ export function getUser() {
 }
 
 // export function getNewTeam() {
-  //maybe payload directly from req.body instead then paring into JSON
+//maybe payload directly from req.body instead then paring into JSON
 //   const token = getToken();
 //   // If there's a token, return the user in the payload, otherwise return null
 //   return token ? JSON.parse(atob(token.split(".")[1])).user : null;

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const logger = require('morgan');
 require('./config/database');
 
@@ -25,16 +25,20 @@ app.use(require('./config/checkToken'));
 //sign up and login part 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/team', require('./routes/api/newTeam'));
-app.use('/api/favorites', require('./routes/api/favorites'));
+//TO DO
+// app.use('/api/favorites', require('./routes/api/favorites'));
+
+
 // Protect the API routes below from anonymous users
 // //setting up routers for order and item
-const ensureLoggedIn = require('./config/ensureLoggedIn');
+// const ensureLoggedIn = require('./config/ensureLoggedIn');
 // //checking if a user logged in
 // //the middleware ensureLoggedIn will protect all the routes and persist login
 // app.use('/api/favorites', ensureLoggedIn, require('./routes/api/favorites'));
 // app.use('/api/addNewTeam', ensureLoggedIn, require('./routes/api/NewTeam'));
 // app.use('/api/favorites', ensureLoggedIn, require('./routes/api/users/favorites'));
 // app.use('/api/newTeam', ensureLoggedIn, require('./routes/api/users/add-new-team'));
+
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

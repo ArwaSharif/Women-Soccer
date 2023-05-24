@@ -2,12 +2,10 @@ import sendRequest from "./send-request";
 
 const BASE_URL = '/api/team';
 
-// AddNewTeam func
-
+// Add new team 
 export async function addNewTeam(newTeamData) {
     return sendRequest(`${BASE_URL}`, 'POST', newTeamData)
 }
-//TO DO
 
 //get teams 
 export async function getTeams() {

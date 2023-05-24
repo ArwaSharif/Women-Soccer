@@ -1,13 +1,11 @@
 const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 
-module.exports = { 
+module.exports = {
   create,
   login,
- };
-
-// controllers/api/users.js
+};
 
 //this func fires when a request is made to /api/users POST
 async function create(req, res) {
@@ -37,11 +35,11 @@ async function login(req, res) {
     // if user found, compare password
     //1st arg from the credentials the user typed in
     //2nd arg what's stored in the database
-    const match = await bcrypt.compare(req.body.password, user.password); 
+    const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) throw new Error(); // if pass doesn't match will throw an err
     res.json(createJWT(user)); // if everything checks out, create token, login
   } catch {
-    res.status(400).json('Bad Credentials');
+    res.status(400).json("Bad Credentials");
   }
 }
 

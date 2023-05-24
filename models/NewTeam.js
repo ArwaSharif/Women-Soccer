@@ -6,7 +6,6 @@ const newTeamSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
     team: teamSchema,
-    //   team: {type: Schema.Types.ObjectId, ref: 'TeamSchema'},
   },
   {
     timestamps: true,

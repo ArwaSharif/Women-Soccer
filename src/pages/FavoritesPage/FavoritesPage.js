@@ -1,10 +1,12 @@
 import { useState, useEffect} from "react";
 import styles from "./FavoritesPage.module.css";
-import NavBar from "../../components/NavBar/NavBar";
-import AuthPage from "../AuthPage/AuthPage";
 
 export default function FavoritesPage({ user }, setUser) {
-  const [favoriteTeam, setFavoriteTeam] = useState([]); //an array
+  // TO DO
+  // adding to fav
+
+
+  // const [favoriteTeam, setFavoriteTeam] = useState([]); //an array
 
   // //create a new state for the
   // useEffect(() => {
@@ -44,7 +46,7 @@ export default function FavoritesPage({ user }, setUser) {
               {/* <h1>team.flag img</h1> */}
               <ul className={styles.FavoritesPageList}>
                 Fav List
-          {/* {team.map((t, i) => {
+          {/* {favoriteTeam.map((t, i) => {
             console.log("this is t", t);
             return (
               <>

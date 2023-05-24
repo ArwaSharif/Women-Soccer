@@ -1,12 +1,10 @@
 //imports
 import styles from "./App.module.css";
 import * as userService from "../../utilities/users-service";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 //pages
 import NavBar from "../../components/NavBar/NavBar";
-import Logo from "../../components/Logo/Logo";
 import Intro from "../../components/Intro/Intro";
 // import FWWX23Teams from "../../components/FWWX23Teams/FWWX23Teams";
 import AllTeams from "../../components/AllTeams/AllTeams";
@@ -20,25 +18,9 @@ import TeamsInfo from "../TeamInfo/TeamInfo";
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [teams, setTeams] = useState(getTeams());
-  const [btn, setBtn] = useState(true);
-  // const clickedBtnNewTeam = !btn
-
-  function handleLogOut() {
-    // Delegate to the users-service
-    userService.logOut();
-    // Update state will also cause a re-render
-    setUser(null);
-  }
-
-
-  // console.log('teams in app', teams)
-  // useEffect(() => {
-  //   console.log('teams in useEffect', teams)
-  // },[btn])
 
   return (
     <main className={styles.App}>
-      {/* <Logo /> */}
       <NavBar user={user} setUser={setUser} />
       <Intro />
 
@@ -99,20 +81,10 @@ export default function App() {
               setUser={setUser}
               teams={teams}
               setTeams={setTeams}
-              btn={btn}
-              setBtn={setBtn}
             />
           }
         />
-        {/* {!user ? (
-        ) : (
-          <Link to="" onClick={handleLogOut}>
-            {" "}
-            Log Out{" "}
-          </Link>
-        )} */}
       </Routes>
     </main>
   );
 }
-// <span> Welcome, {user.name}! </span>

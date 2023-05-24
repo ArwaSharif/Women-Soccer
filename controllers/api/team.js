@@ -3,7 +3,7 @@ const User = require('../../models/User')
 
 module.exports = {
     create,
-    index, // TO DO
+    index, 
 }
 
 async function create(req, res){
@@ -18,12 +18,9 @@ async function create(req, res){
     }
 }
 
-// TO DO
 async function index(req, res){
     try {
         const teams = await Team.find();
-        // teams.user = req.user._id
-        // teams.save()
         console.log("this is index in ctrl/api/team", teams)
         res.status(200).json(teams)
     } catch (error) {

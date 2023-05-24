@@ -8,20 +8,18 @@ const Team = require("../models/Team");
   // await Team.deleteMany({});
   const team = await Team.create([
     {
-      group: "H",
+      // group: "H",
       name: "Germany",
       nameAbbreviation: "GER",
       cupParticipation: 5,
-      // teams: teams[0],
       highestScoringPlayerName: 'Alexandra Popp',
       coach: 'Martina Voss-Tecklenburg'
     },
     {
-      group: "B",
+      // group: "B",
       name: "Nigeria",
       nameAbbreviation: "NGA",
       cupParticipation: 10,
-      // teams: teams[0],
       highestScoringPlayerName: 'Unknown',
       coach: 'Randy Waldrum'
     },

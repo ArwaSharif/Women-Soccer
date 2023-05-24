@@ -3,43 +3,44 @@ import styles from "./AllTeams.module.css";
 // import { useNavigate } from "react-router-dom";
 // import * as newTeamAPI from '../../utilities/newTeam-api';
 import { addFavorites } from "../../utilities/favorites-api";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getTeams } from "../../utilities/newTeam-api";
 
 export default function AllTeams({ user, setUser, teams, setTeams }) {
-  const [team, setTeam] = useState([]); //an array
+  const [teamData, setTeamData] = useState([]); //an array
+  const navigate = useNavigate();
 
-  //create a new state for the
+  //create a new state for the fetched team
   useEffect(() => {
     // Load previous orders (paid)
     async function fetchGetTeams() {
       const teamsData = await getTeams();
-      setTeam(teamsData);
+      setTeamData(teamsData);
     }
     fetchGetTeams();
   }, []);
 
-  const navigate = useNavigate();
-
-  async function handleAddToFav(evt) {
-    try {
-      // const newFavorite = await evt.target._id;
-      const newFavorite = await evt.target;
-      // setUser(newFavorite);
-      addFavorites(newFavorite);
-      console.log("this is fav", newFavorite);
-      console.log(addFavorites(newFavorite));
-      navigate("/favorites");
-    } catch (error) {
-      console.error(error);
-    }
-  }
+// TO DO
+// adding to fav
+  // async function handleAddToFav(evt) {
+    // try {
+    //   // const newFavorite = await evt.target._id;
+    //   const newFavorite = await evt.target;
+    //   // setUser(newFavorite);
+    //   addFavorites(newFavorite);
+    //   console.log("this is fav", newFavorite);
+    //   console.log(addFavorites(newFavorite));
+    //   navigate("/favorites");
+    // } catch (error) {
+    //   console.error(error);
+    // }
+  // }
 
   return (
     <>
       <div className={styles.AllTeams}>
         <ul className={styles.AllTeamsList}>
-          {team.map((t, i) => {
+          {teamData.map((t, i) => {
             console.log("this is t", t);
             return (
               <>
@@ -51,8 +52,7 @@ export default function AllTeams({ user, setUser, teams, setTeams }) {
                   <div className="addFavBtn">
                     <button
                       className="btn-sm"
-                      onClick={handleAddToFav}
-                      disabled={!user}
+                      // onClick={handleAddToFav}
                     >
                       Add To Your Favorite List
                     </button>

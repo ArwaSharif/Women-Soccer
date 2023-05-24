@@ -1,3 +1,5 @@
+// TO CHECK IF NEEDED
+
 // import styles from './UserLogOut.module.css';
 // import { logOut } from '../../utilities/users-service';
 

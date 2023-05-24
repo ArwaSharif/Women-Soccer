@@ -10,6 +10,10 @@ router.post('/', teamCtrl.create);
 // getting all teams
 router.get('/', teamCtrl.index); //TO DO
 
+// PUT /api/team/:id
+// editing existing info
+// router.get('/:id', teamCtrl.edit);
+
 // GET /api/team/:id
 // showing a specific team
 // router.get('/:id', teamCtrl.show);
