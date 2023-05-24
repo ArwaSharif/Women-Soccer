@@ -81,7 +81,7 @@ export default function NavBar({ user }, setUser) {
         )}
       </div>
       
-      <div className={styles.timeDiv}>&nbsp; | &nbsp;{date}</div>
+      <div className={styles.timeDiv}>{date}</div>
     </div>
   );
 }

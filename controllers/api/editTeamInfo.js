@@ -18,7 +18,7 @@ async function update(req, res){
         //     {$push : {favorites: newTeam}},
         //     {new: true}
         // )
-        console.log(updateTeam)
+        // console.log(updateTeam)
         res.status(200).send(updateTeam)
     } catch (error) {
         res.status(400).send(error)

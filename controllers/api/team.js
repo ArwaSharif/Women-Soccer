@@ -11,7 +11,7 @@ async function create(req, res){
         const newTeam = await Team.create(req.body);
         newTeam.user = req.user._id
         newTeam.save()
-        console.log(newTeam)
+        console.log('this is new created team', newTeam)
         res.status(200).send(newTeam)
     } catch (error) {
         res.status(400).send(error)
@@ -25,7 +25,7 @@ async function index(req, res){
         // teams.user = req.user._id
         // teams.save()
         console.log("this is index in ctrl/api/team", teams)
-        res.status(200).send(teams)
+        res.status(200).json(teams)
     } catch (error) {
         res.status(400).send(error)
     }

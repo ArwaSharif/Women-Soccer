@@ -4,7 +4,7 @@ import { useState } from "react";
 // import a link or the teams info page
 import { Link, useNavigate } from "react-router-dom";
 
-export default function FWWX23Teams({ user }, setUser) {
+export default function FWWX23Teams({ user , setUser, teams, setTeams}) {
   //usseState OR props
   // const teams = this.props.teams
   const navigate = useNavigate();

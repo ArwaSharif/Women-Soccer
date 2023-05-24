@@ -7,12 +7,12 @@ const teamSchema = new Schema(
     group: { type: String },
     name: { type: String, required: true },
     nameAbbreviation: { type: String, required: true },
-    cupParticipation: { type: Number, required: true, default: 0 },
+    cupParticipation: { type: Number, default: 0 },
     highestScoringPlayerName: {
       type: String,
       default: "Unknown",
     },
-    coach: { type: String, required: true },
+    coach: { type: String },
     user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {

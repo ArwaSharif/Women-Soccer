@@ -10,6 +10,6 @@ const favoritesCtrl = require('../../controllers/api/addFavorites');
 router.post('/favorites', favoritesCtrl.update);
 
 // GET /api/team/:id
-// router.get('/:id', teamCtrl.show);
+// router.put('/:id', teamCtrl.show);
 
 module.exports = router;

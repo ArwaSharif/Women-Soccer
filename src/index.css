@@ -32,6 +32,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url(../public/soccer-field-bg.jpg);
   background-size: cover;
+  background-color: transparent;
   padding: 2vmin;
   height: 100vh;
   /* color: black; */
@@ -109,7 +110,7 @@ form {
 }
 
 label {
-  font-size: 2vmin;
+  font-size: 3vmin;
   display: flex;
   align-items: center;
   color: white;
@@ -117,12 +118,13 @@ label {
 
 input {
   padding: 1vmin;
-  font-size: 2vmin;
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 0.5vmin;
-  color: var(--text-dark);
-  background-image: none !important; /* prevent lastpass */
-  outline: none;
+    font-size: 3vmin;
+    border: 0.1vmin solid white;
+    border-radius: 0.5vmin;
+    color:black;
+    background-image: none !important;
+    outline: none;
+    background: transparent;
 }
 
 input:focus {
@@ -135,7 +137,7 @@ a.button {
   padding: 1vmin;
   color: var(--white);
   background-color: var(--orange);
-  font-size: 2vmin;
+  font-size: 2.5vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
