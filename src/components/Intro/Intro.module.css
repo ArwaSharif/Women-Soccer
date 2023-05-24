@@ -1,0 +1,11 @@
+.Intro {
+    text-align: center;
+    color: black;
+}
+.Intro p {
+   font-size: 15pt; 
+}
+
+.Intro button {
+    color: black;
+}

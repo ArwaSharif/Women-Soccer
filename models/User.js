@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
-
+const teamSchema = require('./TeamSchema.js');
+// The SALT_ROUNDSvariable determines how much processing time it will take to perform the hash. Let's define it near the top of the module
 const SALT_ROUNDS = 6;
 
 const userSchema = new Schema({
@@ -20,6 +21,10 @@ const userSchema = new Schema({
     required: true
   }
 }, {
+  favorites: [teamSchema]
+}, 
+
+{
   timestamps: true,
   toJSON: {
     transform: function(doc, ret) {

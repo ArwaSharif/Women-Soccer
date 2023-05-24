@@ -1,27 +1,31 @@
-const Team = require('../../models/Team');
+const Team = require('../../models/Team')
+const User = require('../../models/User')
 
 module.exports = {
-  index,
-  show,
-};
- 
-async function index(req, res) {
-  try{
-    //populate to have the name and the order?!
-    const teams = await Team.find({}).sort('name').populate('teams').exec();
-    // re-sort based upon the sortOrder of the categories
-    teams.sort((a, b) => a.teams.sortOrder - b.teams.sortOrder);
-    res.status(200).json(teams);
-  }catch(e){
-    res.status(400).json({ msg: e.message });
-  }
+    create,
+    index,
 }
 
-async function show(req, res) {
-  try{
-    const team = await Team.findById(req.params.id);
-    res.status(200).json(team);
-  }catch(e){
-    res.status(400).json({ msg: e.message });
-  }  
+async function create(req, res){
+    try {
+        const newTeam = await Team.create(req.body);
+        newTeam.user = req.user._id
+        newTeam.save()
+        console.log(newTeam)
+        res.status(200).send(newTeam)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+
+async function index(req, res){
+    try {
+        const teams = await Team.find();
+        // teams.user = req.user._id
+        // teams.save()
+        console.log("this is index in ctrl/api/team", teams)
+        res.status(200).send(teams)
+    } catch (error) {
+        res.status(400).send(error)
+    }
 }

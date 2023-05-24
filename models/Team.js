@@ -1,8 +1,6 @@
-//from Item
+// from Item
 const mongoose = require('mongoose');
-// Ensure the Category model is processed by Mongoose
-require('./Teams');
-
-const teamSchema = require('./teamSchema');
+// Ensure the teamSchema model is processed by Mongoose
+const teamSchema = require('./TeamSchema');
 
 module.exports = mongoose.model('Team', teamSchema);

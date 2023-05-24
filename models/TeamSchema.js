@@ -1,6 +1,28 @@
 //from itemSchema
+// const team = require("./Team");
 const Schema = require("mongoose").Schema;
 
+const teamSchema = new Schema(
+  {
+    group: { type: String },
+    name: { type: String, required: true },
+    nameAbbreviation: { type: String, required: true },
+    cupParticipation: { type: Number, required: true, default: 0 },
+    highestScoringPlayerName: {
+      type: String,
+      default: "Unknown",
+    },
+    coach: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+module.exports = teamSchema;
+
+//Adding Plyers Schema later
 // const playersRosterSchema = new Schema(
 //   {
 //     playerName: {
@@ -23,25 +45,3 @@ const Schema = require("mongoose").Schema;
 //     timestamps: true,
 //   }
 // );
-
-const teamSchema = new Schema(
-  {
-    group: { type: String, required: true },
-    name: { type: String, required: true },
-    // group: { type: String, required: true },
-    nameAbbreviation: { type: String, required: true },
-    teams: { type: Schema.Types.ObjectId, ref: "Teams" },
-    cupParticipation: { type: Number, required: true, default: 0 },
-    highestScoringPlayerName: { type: String, required: true, default: "Unknown" },
-    coach: { type: String, required: true },
-    // playersRoster: [playersRosterSchema],
-  },
-  {
-    timestamps: true,
-  }
-);
-
-// const Team = model("Flight", teamSchema);
-
-// module.exports = Team;
-module.exports = teamSchema;

@@ -6,10 +6,12 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
 //POST 
+// creating a new user
 router.post('/', userCtrl.create)
 
 
 // POST /api/users/login
+// user logging in
 router.post("/login", userCtrl.login)
 
 

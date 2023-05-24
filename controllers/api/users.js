@@ -32,7 +32,6 @@ async function create(req, res) {
 async function login(req, res) {
   try {
     //query our db to find the specific user's email
-    //
     const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error(); // if user is not found
     // if user found, compare password

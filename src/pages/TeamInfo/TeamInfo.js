@@ -8,8 +8,8 @@ export default function TeamsInfo() {
 
   return (
     <div className={styles.TeamInfo}>
-      <Logo />
-      <NavBar />
+      {/* <Logo /> */}
+      {/* <NavBar /> */}
       {/* making sure the team clicked on in the app page is the same, THEN populate info */}
       <div className="teamInfo">
       {/* <h1>team.flag img</h1> */}

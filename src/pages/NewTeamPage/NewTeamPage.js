@@ -7,15 +7,10 @@ import NavBar from "../../components/NavBar/NavBar";
 import Logo from "../../components/Logo/Logo";
 import { Component } from 'react';
 import AuthPage from "../AuthPage/AuthPage";
-// import { AddNewTeam } from '../../utilities/users-service';
-// export default function NewOtherTeam({ user }, setUser) {
-//useState OR props
-// async function handleAddToFav() {
-//   await favoritesAPI.addToFav();
-//   navigate('/favorites');
-// }
+import { addNewTeam } from '../../utilities/newTeam-api';
 
 
+// export default class NewOtherTeamPage extends Component {
 export default class NewOtherTeamPage extends Component {
   state = {
     name: '',
@@ -23,7 +18,6 @@ export default class NewOtherTeamPage extends Component {
     // flag: '',
     highestScoringPlayerName: '',
     coach: '',
-    // flag: '',
     confirm: '',
     error: '',
   };
@@ -38,36 +32,26 @@ export default class NewOtherTeamPage extends Component {
 
   handleSubmit = async (evt) => {
     evt.preventDefault();
+      // const clickedBtnNewTeam = this.props.btn && !this.props.btn 
     try {
-      // We don't want to send the 'error' or 'confirm' property,
-      //  so let's make a copy of the state object, then delete them
       const formData = { ...this.state };
-      // delete formData.error;
       delete formData.confirm;
+      delete formData.error;
+      console.log(formData)
+      await addNewTeam(formData)
+      this.props.setBtn(!this.props.btn)
+      // navigate('/');
 
-      // The promise returned by the signUp service method
-      // will resolve to the user object included in the
-      // payload of the JSON Web Token (JWT)
-      // const user = await AddNewTeam(formData); // the signUp() does token management 
-      // Baby step!
-      // console.log("Hello", user);
-
-      // this.props.setUser(user)
     } catch {
       // An error occurred
       this.setState({ error: 'Please Fill Out All the Fields' });
     }
   };
 
-  handleNavigateToBasePage = async () => {
-  const navigate = useNavigate();
-  // await favoritesAPI.addToFav();
-  navigate('/');
-}
+
 
 
 render() {
-
   // const disable = this.state !== this.state.confirm;
 
   return (
@@ -109,7 +93,8 @@ render() {
             required
           />
           {/* <button type="submit" onClick={this.handleNavigateToBasePage}> */}
-          <button type="submit" onClick={this.handleNavigateToBasePage}>
+          {/* <button type="submit" onClick={this.handleNavigateToBasePage}> */}
+          <button type="submit" >
             Add New Team
           </button>
         </form>

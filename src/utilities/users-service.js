@@ -35,17 +35,17 @@ export async function login(credentials) {
 
 // AddNewTeam func
 
-// export async function AddNewTeam(NewTeam) {
+// export async function NewTeam(newTeamData) {
 //   // Delegate the network request code to the users-api.js API module
 //   // which will ultimately return a JSON Web Token (JWT)
-//   const token = await usersAPI.AddNewTeam(NewTeam);
+//   const token = await usersAPI.NewTeam(NewTeamData);
 
 //   //persist the token
 //   //first item is a property and 2nd is an property item
 //   localStorage.setItem("token", token);
 
 //   // Baby step by returning whatever is sent back by the server
-//   // return getUser();
+//   // return getNewTeam()
 // }
 
 
@@ -73,6 +73,13 @@ export function getUser() {
   // If there's a token, return the user in the payload, otherwise return null
   return token ? JSON.parse(atob(token.split(".")[1])).user : null;
 }
+
+// export function getNewTeam() {
+  //maybe payload directly from req.body instead then paring into JSON
+//   const token = getToken();
+//   // If there's a token, return the user in the payload, otherwise return null
+//   return token ? JSON.parse(atob(token.split(".")[1])).user : null;
+// }
 
 export function logOut() {
   localStorage.removeItem("token");

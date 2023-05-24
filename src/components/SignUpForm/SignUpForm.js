@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { signUp } from '../../utilities/users-service';
+import { useNavigate } from "react-router-dom";
+
 
 export default class SignUpForm extends Component {
   state = {
@@ -20,6 +22,7 @@ export default class SignUpForm extends Component {
 
   handleSubmit = async (evt) => {
     evt.preventDefault();
+    // const navigate = useNavigate();
     try {
       // We don't want to send the 'error' or 'confirm' property,
       //  so let's make a copy of the state object, then delete them
@@ -35,12 +38,18 @@ export default class SignUpForm extends Component {
       // console.log("Hello", user);
 
       this.props.setUser(user)
+      // navigate('/');
     } catch {
       // An error occurred
       this.setState({ error: 'Sign Up Failed - Try Again' });
     }
   };
 
+  // handleNavigateToBasePage = async () => {
+  //   const navigate = useNavigate();
+  //   // await favoritesAPI.addToFav();
+  //   navigate('/');
+  // }
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
@@ -79,7 +88,8 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <button type="submit" disabled={disable}>
+            {/* <button type="submit" disabled={disable} onClick={this.handleNavigateToBasePage}> */}
+            <button type="submit" disabled={disable} >
               SIGN UP
             </button>
           </form>

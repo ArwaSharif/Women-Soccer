@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import { useNavigate } from "react-router-dom";
 
 //it is a functional component not a class component
 export default function LoginForm({ setUser }) {
@@ -31,11 +32,18 @@ async function handleSubmit(evt) {
     const user = await usersService.login(credentials);
     //setting the user state, it's the prop that we destructured 
     setUser(user);
+    navigate('/');
   } catch {
     setError('Log In Failed - Try Again');
   }
 }
 
+const navigate = useNavigate()
+
+// async function handleNavigateToBasePage() {
+//   // await favoritesAPI.addToFav();
+// navigate('/');
+// }
 return (
   <div>
   <div className="form-container">
@@ -56,6 +64,7 @@ return (
         onChange={handleChange}
         required
       />
+      {/* <button type="submit" onClick={handleNavigateToBasePage}> */}
       <button type="submit" >
         LOGIN
       </button>

@@ -35,13 +35,13 @@ export default function NavBar({ user }, setUser) {
     <div className={styles.NavBar}>
       <NavLink
         className="navbar-item"
-        activeClassName="is-active"
-        to="/signUp-logIn"
-        exact
+        // activeclassName="is-active"
+        to={!user ? "/signUp-logIn" : "/"}
+        // exact
       >
         <div className="loginDiv">
           {!user ? (
-            <h6>Sign UP/Log In</h6>
+            <>Sign UP/Log In</>
           ) : (
             <span> Welcome, {user.name}! </span>
           )}
@@ -50,36 +50,38 @@ export default function NavBar({ user }, setUser) {
       </NavLink>
       <NavLink
         className="navbar-item"
-        activeClassName="is-active"
-        to="/favorites"
+        // activeClassName="is-active"
+        to={"/favorites" ? "/favorites" : "/"}
         exact
       >
         <div className="loginDiv">
-          Favorite
+          Favorites
           {/* {user ? <FavoritesPage /> : <AuthPage />} */}
         </div>
       </NavLink>
       <NavLink
         className="navbar-item"
-        activeClassName="is-active"
+        // activeclassName="is-active"
         to="/new-team"
         exact
       >
-        <div className="loginDiv">
-          Add New Team
+        <div >
+          Add a New Team
           {/* {user ? <FavoritesPage /> : <AuthPage />} */}
         </div>
       </NavLink>
-      <div className="logOutDiv">
+      <div >
         {user && (
-          <Link to="" onClick={handleLogOut}>
+          <Link to=""  onClick={handleLogOut}>
             {" "}
+            <div className="logOutDiv">
             Log Out{" "}
+            </div>
           </Link>
         )}
       </div>
-      &nbsp; | &nbsp;
-      <div className="timeDiv">{date}</div>
+      
+      <div className={styles.timeDiv}>&nbsp; | &nbsp;{date}</div>
     </div>
   );
 }

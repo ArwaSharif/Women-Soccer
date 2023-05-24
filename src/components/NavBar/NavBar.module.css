@@ -1,14 +1,29 @@
 .NavBar {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(146, 132, 106);
+  /* background-color: rgb(146, 132, 106); */
   color: white;
   padding: 15px;
   font-size: 2em;
+  box-shadow: 0 -0.5rem 1rem rgba(0 0 0 / 0.15);
+  border-radius: 20px;
+  border-color: white;
 }
 
 .NavBar a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 15pt;;
+}
+
+.timeDiv {
+  color: black;
+  text-decoration: none;
+  font-size: 10pt;;
+}
+
+.logOutDiv {
+  color: black;
+  text-decoration: none;
+  font-size: 15pt;
 }

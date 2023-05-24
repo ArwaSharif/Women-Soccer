@@ -6,6 +6,8 @@ import Logo from "../../components/Logo/Logo";
 
 export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(true);
+  //to nav bar
+  const [showComponent, setShowComponent] = useState(true);
 
   return (
     <main className={styles.AuthPage}>
@@ -14,11 +16,13 @@ export default function AuthPage({ setUser }) {
           {showLogin ? "SIGN UP" : "LOG IN"}
         </h3>
       </div>
+      <div>
       {showLogin ? ( 
         <LoginForm setUser={setUser} />
       ) : ( 
         <SignUpForm setUser={setUser} />
        )} 
+       </div>
     </main>
   );
 }

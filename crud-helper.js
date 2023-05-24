@@ -7,13 +7,12 @@ require('./config/database');
 
 // Require the Mongoose models
 const User = require('./models/User');
-// const Item = require('./models/item');
-// const Category = require('./models/category');
-// const Order = require('./models/order');
+// const Team = require('./models/Team');
+// const Favorites = require('./models/FavoritesList');
 
 // Local variables will come in handy for holding retrieved documents
-let user, team, favorites, OtherTeams;
-let users, teams;
+// let user, team, favorites, ntherTeam;
+// let users, teams;
 
 /*
 This is how we will use the crud-helper.js module in the future:
