@@ -8,7 +8,7 @@ router.post('/', teamCtrl.create);
 
 // GET /api/team
 // getting all teams
-router.get('/', teamCtrl.index);
+router.get('/', teamCtrl.index); //TO DO
 
 // GET /api/team/:id
 // showing a specific team

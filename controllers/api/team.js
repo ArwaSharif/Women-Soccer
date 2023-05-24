@@ -3,7 +3,7 @@ const User = require('../../models/User')
 
 module.exports = {
     create,
-    index,
+    index, // TO DO
 }
 
 async function create(req, res){
@@ -18,6 +18,7 @@ async function create(req, res){
     }
 }
 
+// TO DO
 async function index(req, res){
     try {
         const teams = await Team.find();
