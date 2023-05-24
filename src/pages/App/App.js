@@ -8,7 +8,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Logo from "../../components/Logo/Logo";
 import Intro from "../../components/Intro/Intro";
-import FWWX23Teams from "../../components/FWWX23Teams/FWWX23Teams";
+// import FWWX23Teams from "../../components/FWWX23Teams/FWWX23Teams";
 import AllTeams from "../../components/AllTeams/AllTeams";
 import { getUser } from "../../utilities/users-service";
 import { getTeams } from "../../utilities/newTeam-api";
@@ -30,7 +30,7 @@ export default function App() {
     setUser(null);
   }
 
-  
+
   // console.log('teams in app', teams)
   // useEffect(() => {
   //   console.log('teams in useEffect', teams)
@@ -54,7 +54,7 @@ export default function App() {
             />
           }
         />
-        <Route
+        {/* <Route
           path="/FWWX23-teams"
           element={
             <FWWX23Teams
@@ -64,7 +64,7 @@ export default function App() {
               setTeams={setTeams}
             />
           }
-        />
+        /> */}
         <Route
           path="/all-teams"
           element={

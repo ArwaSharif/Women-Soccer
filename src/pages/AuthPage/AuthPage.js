@@ -13,7 +13,7 @@ export default function AuthPage({ setUser }) {
     <main className={styles.AuthPage}>
       <div>
         <h3 onClick={() => setShowLogin(!showLogin)}>
-          {showLogin ? "SIGN UP" : "LOG IN"}
+          CLICK TO {showLogin ? "SIGN UP" : "LOG IN"}
         </h3>
       </div>
       <div>

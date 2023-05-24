@@ -1,0 +1,18 @@
+.FavoritesPage {
+    text-align: center;
+}
+.FavoritesPageList {
+  display: flex;
+  color: white;
+  padding: 15px;
+  font-size: 2rem;
+  text-align: center;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.FavoritesPageList a {
+color: white;
+text-decoration: none;
+}

@@ -11,3 +11,7 @@
   flex-wrap: wrap;
 }
 
+.AllTeamsList a {
+color: white;
+text-decoration: none;
+}

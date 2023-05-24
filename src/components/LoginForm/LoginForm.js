@@ -1,76 +1,59 @@
-import { useState } from 'react';
-import * as usersService from '../../utilities/users-service';
+import { useState } from "react";
+import * as usersService from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 
-//it is a functional component not a class component
 export default function LoginForm({ setUser }) {
-    //creating our state with email and pass
-const [credentials, setCredentials] = useState({
-  email: '',
-  password: ''
-});
- 
-//state for handling error
-const [error, setError] = useState('');
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-function handleChange(evt) {
-  setCredentials({
-    //this will be updated every time smth clicked and assigned to value
-     ...credentials, [evt.target.name]: evt.target.value 
-    });
-//   setError('');
-}
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-//bc it's a request, we make it async function
-async function handleSubmit(evt) {
-  // Prevent form from being submitted to the server when we click submit
-  evt.preventDefault();
-  try {
-    // The promise returned by the signUp service method
-    // will resolve to the user object included in the
-    // payload of the JSON Web Token (JWT)
-    const user = await usersService.login(credentials);
-    //setting the user state, it's the prop that we destructured 
-    setUser(user);
-    navigate('/');
-  } catch {
-    setError('Log In Failed - Try Again');
-  }
-}
+  const handleChange = (evt) => {
+    setCredentials((prevCredentials) => ({
+      ...prevCredentials,
+      [evt.target.name]: evt.target.value,
+    }));
+    setError("");
+  };
 
-const navigate = useNavigate()
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    try {
+      const user = await usersService.login(credentials);
+      setUser(user);
+      navigate("/");
+    } catch {
+      setError("Log In Failed - Try Again");
+    }
+  };
 
-// async function handleNavigateToBasePage() {
-//   // await favoritesAPI.addToFav();
-// navigate('/');
-// }
-return (
-  <div>
-  <div className="form-container">
-    <form autoComplete="off" onSubmit={handleSubmit}>
-      <label>Email</label>
-      <input
-        type="email"
-        name="email"
-        value={credentials.email}
-        onChange={handleChange}
-        required
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        name="password"
-        value={credentials.password}
-        onChange={handleChange}
-        required
-      />
-      {/* <button type="submit" onClick={handleNavigateToBasePage}> */}
-      <button type="submit" >
-        LOGIN
-      </button>
-    </form>
-  </div>
-  <p className="error-message">&nbsp;{error}</p>
-</div>
+  return (
+    <div>
+      <div className="form-container">
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={credentials.email}
+            onChange={handleChange}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">LOGIN</button>
+        </form>
+      </div>
+      <p className="error-message">&nbsp;{error}</p>
+    </div>
   );
 }
