@@ -42,7 +42,7 @@ export default function NewOtherTeamPage({ user, serUser, teams, setTeams }) {
         coach,
       };
       await addNewTeam(formData);
-      navigate("/");
+      navigate("/all-teams");
     } catch {
       setError("Please Fill Out All the Fields");
     }

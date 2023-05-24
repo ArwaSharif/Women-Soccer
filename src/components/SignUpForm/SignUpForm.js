@@ -38,7 +38,7 @@ export default function SignUpForm({ setUser }) {
       setUser(user);
       navigate("/");
     } catch {
-      setError("Sign Up Failed - Try Again");
+      setError("Sign Up Failed - Password Minimum Length is 3 Characters");
     }
   };
 

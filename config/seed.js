@@ -5,7 +5,7 @@ const Team = require("../models/Team");
 
 (async function () {
 
-  // await Team.deleteMany({});
+  await Team.deleteMany({});
   const team = await Team.create([
     {
       // group: "H",

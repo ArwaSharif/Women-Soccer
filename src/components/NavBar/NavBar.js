@@ -26,7 +26,7 @@ export default function NavBar({ user }, setUser) {
         to={showComponent ? "/" : "/signUp-logIn"}
       >
         <div className="loginDiv">
-          {!user ? <>Sign UP/Log In</> : <span> Welcome, {user.name}! </span>}
+          {!user ? <>Sign Up/Log In</> : <span> Welcome, {user.name}! </span>}
         </div>
       </Link>
       <Link onClick={toggleComponent} to={showComponent ? "/" : "/favorites"}>
