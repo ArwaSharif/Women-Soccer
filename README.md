@@ -12,9 +12,12 @@ The Women's Soccer application is an interactive app that introduces information
 
 ### Technologies Used
 
-This is full-stack MERN application that utilized technologies including:
-- CRUD operations
-- AJAX calls
+- MongoDB and Mongoose,
+- express JS.
+- react JS,
+- node JS,
+- CRUD operations,
+- AJAX calls,
 - date-fns library,
 - concurrently,
 - react-router-dom,
@@ -23,6 +26,7 @@ This is full-stack MERN application that utilized technologies including:
 
 ### Unsolved Problems
 
+- Implementing the full CRUD functionality 
 - Adding and removing a team to the favorites list
 - A show route to render information about a specific team
 - Error Handling (signing up)
